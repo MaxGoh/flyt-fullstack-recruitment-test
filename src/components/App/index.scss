@@ -23,6 +23,13 @@
   align-self: center;
   vertical-align: middle;
 
+  &__image {
+    height: 46px;
+    width: 46px;
+    border-radius: 100%;
+    border: 2px solid #191919;
+  }
+
   &__login-text {
     color: #191919;
     font-size: 16px;
@@ -30,11 +37,4 @@
     align-self: center;
     margin-left: 5px;
   }
-}
-
-img#profile {
-  border-radius: 100%;
-  width: 50px;
-  height: 50px;
-  border: 2px solid #191919;
 }
