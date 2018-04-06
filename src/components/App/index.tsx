@@ -1,6 +1,6 @@
 import * as React from 'react'
 import BottomBorderDiv from 'components/Shared/BottomBorderDiv'
-import './index.css'
+import './index.scss'
 
 const Logo = require('assets/image/logo.svg')
 const Profile = require('assets/image/user.svg')
