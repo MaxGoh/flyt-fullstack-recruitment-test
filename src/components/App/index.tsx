@@ -11,15 +11,22 @@ class App extends React.Component<{}, {}> {
     return (
       <div className='container'>
         <BottomBorderDiv borderHeight='4px'>
-          <div style={{ textAlign: 'center' }}>
-            <img id='logo' src={Logo} alt='logo' />
-            <div style={{ float: 'right' }}>
-              <div>
-                <img id='profile' src={Profile} alt='profile' />
-                <a href='#'>LOGIN</a>
-              </div>
+
+          <div className='header'>
+
+            <div className='header__item' />
+
+            <div className='header__item logo'>
+              <img id='logo' src={Logo} alt='logo' />
             </div>
+
+            <div className='header__item profile'>
+                <img id='profile' src={Profile} alt='profile' />
+                <a className='profile__login-text' href='#'><b>LOGIN</b></a>
+            </div>
+
           </div>
+
         </BottomBorderDiv>
       </div>
     )

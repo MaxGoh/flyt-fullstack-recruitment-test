@@ -1,8 +1,35 @@
 .container {
-  padding-right: 15px;
-  padding-left: 15px;
+  padding-right: 10%;
+  padding-left: 10%;
   margin-right: auto;
   margin-left: auto;
+}
+
+.header {
+  display: flex;
+
+  &__item {
+    flex: 1;
+  }
+}
+
+.logo {
+  text-align: center;
+}
+
+.profile {
+  display: flex;
+  justify-content: flex-end;
+  align-self: center;
+  vertical-align: middle;
+
+  &__login-text {
+    color: #191919;
+    font-size: 16px;
+    text-decoration: none;
+    align-self: center;
+    margin-left: 5px;
+  }
 }
 
 img#profile {
