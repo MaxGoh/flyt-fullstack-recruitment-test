@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
 
-interface IState {}
+export interface IRootState {
+  readonly activeLocation: string
+}
 
-const rootReducer = combineReducers<IState>({
+const rootReducer = combineReducers<IRootState>({
 
 })
 
