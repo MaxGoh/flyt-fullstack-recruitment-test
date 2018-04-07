@@ -1,12 +1,12 @@
-import * as actionTypes from './types'
+import * as commonTypes from 'commons/types'
 
-export interface IAction<T, P> {
+export interface IAction<T, P, E> {
   readonly type: T
   readonly payload?: P
   readonly error?: String
 }
 
-export function createAction<T extends string, P>(type: T, payload: P): IAction<T, P> {
+export function createAction<T extends string, P, E>(type: T, payload: P, error: E): IAction<T, P, E> {
   return { type, payload }
 }
 
@@ -16,12 +16,21 @@ export const RETRIEVE_LOCATION_MENU_FAILED = 'RETRIEVE_LOCATION_MENU_FAILED'
 
 type RetrieveLocationMenuRequest = IAction<
   typeof RETRIEVE_LOCATION_MENU_REQUEST,
-  { locationId: String, orderTypeId: String}
+  { locationId: String, orderTypeId: String},
+  null
 >
 
-type RetrieveLocationMenuSuccess = IAction<typeof RETRIEVE_LOCATION_MENU_SUCCESS, void>
+type RetrieveLocationMenuSuccess = IAction<
+  typeof RETRIEVE_LOCATION_MENU_SUCCESS,
+  commonTypes.ILocationMenu,
+  null
+>
 
-type RetrieveLocationMenuFailed = IAction<typeof RETRIEVE_LOCATION_MENU_FAILED, void>
+type RetrieveLocationMenuFailed = IAction<
+  typeof RETRIEVE_LOCATION_MENU_FAILED,
+  null,
+  String
+>
 
 export const retrievelocationMenuRequest = (
   payload: {
@@ -29,7 +38,19 @@ export const retrievelocationMenuRequest = (
     orderTypeId: String
   }
 ): RetrieveLocationMenuRequest => {
-  return createAction(RETRIEVE_LOCATION_MENU_REQUEST, payload);
+  return createAction(RETRIEVE_LOCATION_MENU_REQUEST, payload, null)
+}
+
+export const retrievelocationMenuSuccess = (
+  payload: commonTypes.ILocationMenu
+): RetrieveLocationMenuSuccess => {
+  return createAction(RETRIEVE_LOCATION_MENU_SUCCESS, payload, null)
+}
+
+export const retrieveLocationMenuFailed = (
+  error: String
+): RetrieveLocationMenuFailed => {
+  return createAction(RETRIEVE_LOCATION_MENU_FAILED, null, error)
 }
 
 export type TRootAction =
