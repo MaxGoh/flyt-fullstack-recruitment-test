@@ -32,7 +32,7 @@ export const retrievelocationMenuRequest = (
   return createAction(RETRIEVE_LOCATION_MENU_REQUEST, payload);
 }
 
-export type TActions =
+export type TRootAction =
   | RetrieveLocationMenuRequest
   | RetrieveLocationMenuSuccess
   | RetrieveLocationMenuFailed
