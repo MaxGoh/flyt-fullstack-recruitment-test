@@ -21,7 +21,7 @@ const AddItemButton: React.SFC<IProps & IDispatchProps> = ({
       className='append-button'
       onClick={() => appendMenuItem(payload)}
     >
-      +
+      <i className='fas fa-plus' />
     </button>
   )
 }
