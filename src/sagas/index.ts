@@ -1,20 +1,24 @@
+import { Action } from 'redux'
 import { all } from 'redux-saga/effects'
 import { retrieveMenuService } from 'api/mock'
 import { call, put, takeLatest } from 'redux-saga/effects'
-import { RETRIEVE_LOCATION_MENU_REQUEST, retrievelocationMenuSuccess } from 'actions'
+import {
+  RETRIEVE_LOCATION_MENU_REQUEST,
+  retrieveLocationMenuSuccess,
+  retrieveLocationMenuFailed
+} from 'actions'
 
+interface IAction extends Action {
+  payload: Object
+}
 
-// interface IAction extends Action {
-//   payload: any
-// }
-
-
-function* retrieveMenuSaga(action: string) {
+function* retrieveMenuSaga(action: IAction) {
   try {
     let response = yield call(retrieveMenuService)
-    yield put(retrievelocationMenuSuccess(response))
+    yield put(retrieveLocationMenuSuccess(response))
   } catch (err) {
     console.log(err)
+    yield put(retrieveLocationMenuFailed(err))
   }
 }
 

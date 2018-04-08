@@ -5,6 +5,7 @@ import {
   RETRIEVE_LOCATION_MENU_SUCCESS,
   RETRIEVE_LOCATION_MENU_FAILED
 } from 'actions'
+import { ILocationMenu } from 'commons/types'
 
 export type TRootState = {
   readonly menu: IState
@@ -13,7 +14,7 @@ export type TRootState = {
 interface IState {
   request: Object
   fetching: Boolean
-  payload: Object
+  payload: ILocationMenu
   error: String
 }
 

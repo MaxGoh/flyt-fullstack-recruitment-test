@@ -6,9 +6,13 @@ export interface IAction<T, P, E> {
   readonly error?: String
 }
 
-export function createAction<T extends string, P, E>(type: T, payload: P, error: E): IAction<T, P, E> {
+export function createAction<
+  T extends string, R, P, E
+>(type: T, payload: P, error: E): IAction<T, P, E> {
   return { type, payload }
 }
+
+/* RETRIEVE_LOCATION_MENU_REQUEST */
 
 export const RETRIEVE_LOCATION_MENU_REQUEST = 'RETRIEVE_LOCATION_MENU_REQUEST'
 export const RETRIEVE_LOCATION_MENU_SUCCESS = 'RETRIEVE_LOCATION_MENU_SUCCESS'
@@ -32,7 +36,7 @@ type RetrieveLocationMenuFailed = IAction<
   String
 >
 
-export const retrievelocationMenuRequest = (
+export const retrieveLocationMenuRequest = (
   payload: {
     locationId: String
     orderTypeId: String
@@ -41,7 +45,7 @@ export const retrievelocationMenuRequest = (
   return createAction(RETRIEVE_LOCATION_MENU_REQUEST, payload, null)
 }
 
-export const retrievelocationMenuSuccess = (
+export const retrieveLocationMenuSuccess = (
   payload: commonTypes.ILocationMenu
 ): RetrieveLocationMenuSuccess => {
   return createAction(RETRIEVE_LOCATION_MENU_SUCCESS, payload, null)
@@ -53,7 +57,52 @@ export const retrieveLocationMenuFailed = (
   return createAction(RETRIEVE_LOCATION_MENU_FAILED, null, error)
 }
 
+/* SET_ACTIVE_MENU */
+
+export const SET_ACTIVE_MENU = 'SET_ACTIVE_MENU'
+export const SET_ACTIVE_MENU_SUCCESS = 'SET_ACTIVE_MENU_SUCCESS'
+export const SET_ACTIVE_MENU_FAILED = 'SET_ACTIVE_MENU_FAILED'
+
+type SetActiveMenu = IAction<
+  typeof SET_ACTIVE_MENU,
+  { menu: commonTypes.IMenuCategories },
+  null
+>
+
+type SetActiveMenuSuccess = IAction<
+  typeof SET_ACTIVE_MENU_SUCCESS,
+  { menu: commonTypes.IMenuCategories },
+  null
+>
+
+type SetActiveMenuFailed = IAction<
+  typeof SET_ACTIVE_MENU_FAILED,
+  null,
+  String
+>
+
+export const setActiveMenu = (
+  payload: { menu: commonTypes.IMenuCategories }
+): SetActiveMenu => {
+  return createAction(SET_ACTIVE_MENU, payload, null)
+}
+
+export const setActiveMenuSuccess = (
+  payload: { menu: commonTypes.IMenuCategories }
+): SetActiveMenuSuccess => {
+  return createAction(SET_ACTIVE_MENU_SUCCESS, payload, null)
+}
+
+export const setActiveMenuFailed = (
+  error: String
+): SetActiveMenuFailed => {
+  return createAction(SET_ACTIVE_MENU_FAILED, null, error)
+}
+
 export type TRootAction =
   | RetrieveLocationMenuRequest
   | RetrieveLocationMenuSuccess
   | RetrieveLocationMenuFailed
+  | SetActiveMenu
+  | SetActiveMenuSuccess
+  | SetActiveMenuFailed
