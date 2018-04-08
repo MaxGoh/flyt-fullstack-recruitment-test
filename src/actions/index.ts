@@ -20,7 +20,7 @@ export const RETRIEVE_LOCATION_MENU_FAILED = 'RETRIEVE_LOCATION_MENU_FAILED'
 
 type RetrieveLocationMenuRequest = IAction<
   typeof RETRIEVE_LOCATION_MENU_REQUEST,
-  { locationId: String, orderTypeId: String},
+  { locationId: String, orderTypeId: String },
   null
 >
 
@@ -99,6 +99,54 @@ export const setActiveMenuFailed = (
   return createAction(SET_ACTIVE_MENU_FAILED, null, error)
 }
 
+/* APPEND_MENU_ITEM */
+
+export const APPEND_MENU_ITEM = 'APPEND_MENU_ITEM'
+export const APPEND_MENU_ITEM_SUCCESS = 'APPEND_MENU_ITEM_SUCCESS'
+export const APPEND_MENU_ITEM_FAILED = 'APPEND_MENU_ITEM_FAILED'
+
+type AppendMenuItem = IAction<
+  typeof APPEND_MENU_ITEM,
+  { item: commonTypes.IMenuCategoriesItem },
+  null
+>
+
+type AppendMenuItemSuccess = IAction<
+  typeof APPEND_MENU_ITEM_SUCCESS,
+  commonTypes.ICartData[],
+  null
+>
+
+type AppendMenuItemFailed = IAction<
+  typeof APPEND_MENU_ITEM_FAILED,
+  null,
+  String
+>
+
+export const appendMenuItem = (
+  payload: { item: commonTypes.IMenuCategoriesItem }
+): AppendMenuItem => {
+  return createAction(APPEND_MENU_ITEM, payload, null)
+}
+
+export const appendMenuItemSuccess = (
+  payload: commonTypes.ICartData[]
+): AppendMenuItemSuccess => {
+  return createAction(APPEND_MENU_ITEM_SUCCESS, payload, null)
+}
+
+export const appendMenuItemFailed = (
+  error: String
+): AppendMenuItemFailed => {
+  return createAction(APPEND_MENU_ITEM_FAILED, null, error)
+}
+
+/* REMOVE_MENU_ITEM */
+
+export const REMOVE_MENU_ITEM = 'REMOVE_MENU_ITEM'
+export const REMOVE_MENU_ITEM_SUCCESS = 'REMOVE_MENU_ITEM_SUCCESS'
+export const REMOVE_MENU_ITEM_FAILED = 'REMOVE_MENU_ITEM_FAILED'
+
 export type TRootAction =
   | RetrieveLocationMenuRequest
   | RetrieveLocationMenuSuccess
@@ -106,3 +154,6 @@ export type TRootAction =
   | SetActiveMenu
   | SetActiveMenuSuccess
   | SetActiveMenuFailed
+  | AppendMenuItem
+  | AppendMenuItemSuccess
+  | AppendMenuItemFailed

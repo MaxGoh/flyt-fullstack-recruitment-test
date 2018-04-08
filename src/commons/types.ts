@@ -1,29 +1,29 @@
 export interface ILocationMenu {
   orderType: {
-    id: Number
+    id: number
     name: String
   }
   menus: IMenu[]
-  revision: Number
+  revision: number
   availability: {}
-  menusAvailable: Number[]
+  menusAvailable: number[]
 }
 
 export interface IMenu {
-  id: Number
+  id: number
   name: String
   tags: String
   categories: IMenuCategories[]
 }
 
 export interface IMenuCategories {
-  id: Number
+  id: number
   name: String
   items: IMenuCategoriesItem[]
 }
 
 export interface IMenuCategoriesItem {
-  id: Number
+  id: number
   name: String
   description: String
   customisationType: String
@@ -31,10 +31,10 @@ export interface IMenuCategoriesItem {
 }
 
 export interface IMenuCategoriesItemPortion {
-  id: Number
+  id: number
   name: String
   ingredient: {
-    id: Number
+    id: number
     name: String
     addPrice: String
     stockLevel: String
@@ -44,7 +44,7 @@ export interface IMenuCategoriesItemPortion {
 }
 
 export interface IMenuCategoriesItemPortionModifiers {
-  id: Number
+  id: number
   name: String
   requirementType: String
   inclusionType: String
@@ -53,9 +53,15 @@ export interface IMenuCategoriesItemPortionModifiers {
 }
 
 export interface IMenuCategoriesItemPortionModifiersPickOptions {
-  id: Number
+  id: number
   name: String
-  addPrice: Number
+  addPrice: number
   stockLevel: String
   slots: String
+}
+
+export interface ICartData {
+  id: number
+  quantity: number
+  data: IMenuCategoriesItem
 }

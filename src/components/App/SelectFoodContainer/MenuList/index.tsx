@@ -2,6 +2,7 @@ import * as React from 'react'
 import * as commonTypes from 'commons/types'
 import BottomBorderDiv from 'components/Shared/BottomBorderDiv'
 import './index.scss'
+import AddItemButton from 'containers/Shared/AddItemButton'
 
 export interface IProps {
   activeMenu: commonTypes.IMenuCategories
@@ -25,22 +26,27 @@ class MenuList extends React.Component<IProps, {}> {
               return (
                 <div key={index}>
                   <BottomBorderDiv borderHeight='2px'>
-                    <div  className='item-cell' style={{ display: 'flex' }}>
-                      <h3 className='item-name'>
-                        {item.name}
-                      </h3>
-                      <div style={{ marginLeft: '5px' }}>
-                        {
-                          (item.portions !== undefined)
-                            ? item.portions.map((portion: commonTypes.IMenuCategoriesItemPortion, key: number) => {
-                              return (
-                                <div key={key}>
-                                  <span style={{ fontSize: '14px' }}>£{portion.ingredient.addPrice}</span>
-                                </div>
-                              )
-                              })
-                            : null
-                        }
+                    <div  className='item-cell' style={{ display: 'flex', justifyContent: 'space-between' }}>
+                      <div style={{ display: 'flex', flexDirection: 'row' }}>
+                        <h3 className='item-name'>
+                          {item.name}
+                        </h3>
+                        <div style={{ marginLeft: '5px' }}>
+                          {
+                            (item.portions !== undefined)
+                              ? item.portions.map((portion: commonTypes.IMenuCategoriesItemPortion, key: number) => {
+                                return (
+                                  <div key={key}>
+                                    <span style={{ fontSize: '14px' }}>£{portion.ingredient.addPrice}</span>
+                                  </div>
+                                )
+                                })
+                              : null
+                          }
+                        </div>
+                      </div>
+                      <div>
+                        <AddItemButton item={item} />
                       </div>
                     </div>
                   </BottomBorderDiv>

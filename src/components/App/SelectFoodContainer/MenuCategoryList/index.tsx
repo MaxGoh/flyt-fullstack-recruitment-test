@@ -10,7 +10,6 @@ export interface IProps {
 const MenuCategoryList: React.SFC<IProps> = ({
   menus
 }) => {
-  console.log('menu', menus)
   return (
     <div className='menu-category-list'>
       {
@@ -19,7 +18,7 @@ const MenuCategoryList: React.SFC<IProps> = ({
             menuObj.categories.map((menuCategoryObj: IMenuCategories, index: number) => {
               return (
                 <BottomBorderDiv
-                  borderHeight='4px'
+                  borderHeight='2px'
                   key={index}
                 >
                   <div style={{ textAlign: 'center' }}>
