@@ -8,104 +8,63 @@ export const  retrieveMenuService = () =>
       },
       'menus': [
         {
-          'id': 0,
-          'name': 'string',
+          'id': 3,
+          'name': 'Main Menu',
           'categories': [
             {
-              'id': 0,
-              'name': 'Burgers',
+              'id': 6,
+              'name': 'Starters',
+              'description': '',
               'items': [
                 {
-                  'id': 0,
-                  'name': 'Home Made Burger',
-                  'description': 'Our super home made burger',
+                  'id': 9,
+                  'name': 'Olives',
                   'customisationType': 'simple',
                   'portions': [
                     {
-                      'id': 0,
-                      'name': 'Super Size Burger',
+                      'id': 10,
+                      'name': 'Olives',
                       'ingredient': {
-                        'id': 0,
-                        'name': 'Burger Patty',
-                        'addPrice': 100,
+                        'id': 35,
+                        'name': 'Olives',
+                        'addPrice': 2.45,
                         'stockLevel': 1,
-                        'slots': 1,
-                        'modifiers': [
-                          {
-                            'id': 0,
-                            'name': 'Cook Type',
-                            'requirementType': 'required',
-                            'inclusionType': 'upgrade',
-                            'visible': true,
-                            'pickOptions': [
-                              {
-                                'id': 0,
-                                'name': 'Very rare',
-                                'addPrice': 100,
-                                'stockLevel': 1,
-                                'slots': 0
-                              }
-                            ]
-                          }
-                        ]
+                        'slots': 1
+                      }
+                    }
+                  ]
+                },
+                {
+                  'id': 10,
+                  'name': 'Wasabi Peas',
+                  'customisationType': 'simple',
+                  'portions': [
+                    {
+                      'id': 11,
+                      'name': 'Wasabi Peas',
+                      'ingredient': {
+                        'id': 36,
+                        'name': 'Wasabi Peas',
+                        'addPrice': 1,
+                        'stockLevel': 1,
+                        'slots': 1
                       }
                     }
                   ]
                 }
               ],
-              'tags': 'string'
+              'tags': []
             }
           ],
-          'revision': 0,
-          'upsells': [
-            'string'
-          ],
+          'revision': 1,
+          'upsells': [],
+          'allergyInfoUri': null,
           'availability': {
-            'regular': {
-              'monday': {
-                'open': '07:00',
-                'close': '23:59'
-              },
-              'tuesday': {
-                'open': '07:00',
-                'close': '23:59'
-              },
-              'wednesday': {
-                'open': '07:00',
-                'close': '23:59'
-              },
-              'thursday': {
-                'open': '07:00',
-                'close': '23:59'
-              },
-              'friday': {
-                'open': '07:00',
-                'close': '23:59'
-              },
-              'saturday': {
-                'open': '07:00',
-                'close': '23:59'
-              },
-              'sunday': {
-                'open': '07:00',
-                'close': '23:59'
-              }
-            },
-            'special': [
-              {
-                'date': '2016-12-24',
-                'name': 'Christmas Eve',
-                'hours': {
-                  'open': '07:00',
-                  'close': '23:59'
-                }
-              }
-            ]
+            'regular': {},
+            'special': {}
           }
         }
       ],
-      'menusAvailable': [
-        0
-      ]
+      'menusAvailable': [3]
     }
   )
