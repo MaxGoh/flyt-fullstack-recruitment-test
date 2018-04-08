@@ -37,8 +37,3 @@ $ yarn start
 
 Proceed to http://localhost:3000
 ```
-
-
-#### Unit Testing
-
-` $ yarn run test `
