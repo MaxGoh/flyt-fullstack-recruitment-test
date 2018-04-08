@@ -43,3 +43,16 @@ export const appendCart = (
 
   return sortedCart
 }
+
+export const calculateTotalPrice = (cartDatas: ICartData[]): number => {
+  let totalSum: number = 0
+
+  cartDatas.map((cart: ICartData) => {
+    let cartQuantity: number = cart.quantity
+    let cartPrice: number = Number(cart.data.portions[0].ingredient.addPrice)
+
+    totalSum += (cartQuantity * cartPrice)
+  })
+
+  return totalSum
+}

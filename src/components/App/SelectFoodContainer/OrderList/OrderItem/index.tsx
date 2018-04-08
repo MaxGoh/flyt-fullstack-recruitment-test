@@ -7,9 +7,23 @@ interface IProps {
   price: String
 }
 
-const OrderItem: React.SFC<IProps> = () => (
+const OrderItem: React.SFC<IProps> = ({
+  quantity, name, price
+}) => (
   <div className='order-item'>
-    <BottomBorderDiv borderHeight='1px' />
+    <BottomBorderDiv borderHeight='1px'>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between'
+          }}
+      >
+        <span>{quantity}x</span>
+        <span>{name}</span>
+        <span>£{price}</span>
+      </div>
+    </BottomBorderDiv>
   </div>
 )
 

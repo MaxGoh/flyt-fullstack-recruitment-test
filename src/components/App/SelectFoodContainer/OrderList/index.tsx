@@ -1,16 +1,18 @@
 import * as React from 'react'
 import BottomBorderDiv from 'components/Shared/BottomBorderDiv'
 import Button from 'components/Shared/Button'
-// import OrderItem from 'components/App/SelectFoodContainer/OrderList/OrderItem'
+import OrderItem from 'components/App/SelectFoodContainer/OrderList/OrderItem'
 import './index.scss'
+import { ICartData } from 'commons/types'
+import TotalPriceLabel from 'containers/App/SelectFoodContainer/OrderList/TotalPriceLabel'
 
 export interface IProps {
-  // totalCost: Number
+  cart: ICartData[]
 }
 
 class OrderList extends React.Component<IProps, {}> {
   render() {
-    // const { totalCost } = this.props
+    const { cart } = this.props
     return (
       <div className='order-list-container'>
         <BottomBorderDiv borderHeight='2px'>
@@ -18,10 +20,23 @@ class OrderList extends React.Component<IProps, {}> {
             <h3 style={{ margin: 0 }}>MY ORDERS</h3>
           </div>
         </BottomBorderDiv>
+        {
+          cart.map((data: ICartData, index: number) => {
+            return (
+              <div style={{ padding: '0 15px' }} key={index}>
+                <OrderItem
+                  quantity={data.quantity}
+                  name={data.data.name}
+                  price={data.data.portions[0].ingredient.addPrice}
+                />
+              </div>
+            )
+          })
+        }
         <div className='order-list-total'>
           <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', marginBottom: '15px' }}>
             <span>Total</span>
-            <span>£0.00</span>
+            <TotalPriceLabel />
           </div>
           <Button label='CHECKOUT' />
         </div>
