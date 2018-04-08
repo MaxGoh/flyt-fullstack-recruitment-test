@@ -12,4 +12,4 @@ const mapDispatchToProps = (dispatch: Dispatch<TRootState>) => ({
 
 export default connect<
  {}, IDispatchProps, IProps
->(null, mapDispatchToProps)(OrderRow)
+>(null, mapDispatchToProps)(OrderRow) 

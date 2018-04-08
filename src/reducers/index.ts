@@ -3,18 +3,22 @@ import {
   TRootAction,
   RETRIEVE_LOCATION_MENU_REQUEST,
   RETRIEVE_LOCATION_MENU_SUCCESS,
-  RETRIEVE_LOCATION_MENU_FAILED
+  RETRIEVE_LOCATION_MENU_FAILED,
+  SET_ACTIVE_MENU,
+  SET_ACTIVE_MENU_SUCCESS,
+  SET_ACTIVE_MENU_FAILED
 } from 'actions'
-import { ILocationMenu } from 'commons/types'
+// import { ILocationMenu, IMenuCategories } from 'commons/types'
 
 export type TRootState = {
   readonly menu: IState
+  readonly activeMenu: IState
 }
 
 interface IState {
   request: Object
   fetching: Boolean
-  payload: ILocationMenu
+  payload: any
   error: String
 }
 
@@ -40,8 +44,24 @@ const retrieveLocationMenuReducer = (
   }
 }
 
+const setActiveMenuReducer = (
+  state = initialState, action: TRootAction
+) => {
+  switch (action.type) {
+    case SET_ACTIVE_MENU:
+      return { ...state, fetching: true, request: action.payload }
+    case SET_ACTIVE_MENU_SUCCESS:
+     return { ...state, fetching: false, payload: action.payload }
+    case SET_ACTIVE_MENU_FAILED:
+      return { ...state, fetching: false, error: action.error }
+    default:
+      return state
+  }
+}
+
 const rootReducer = combineReducers<TRootState>({
-  menu: retrieveLocationMenuReducer
+  menu: retrieveLocationMenuReducer,
+  activeMenu: setActiveMenuReducer
 })
 
 export default rootReducer

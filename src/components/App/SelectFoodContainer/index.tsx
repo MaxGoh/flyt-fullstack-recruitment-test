@@ -1,5 +1,7 @@
 import * as React from 'react'
 import MenuCategoryList from 'containers/App/SelectFoodContainer/MenuCategoryList'
+import MenuList from 'containers/App/SelectFoodContainer/MenuList'
+
 import './index.scss'
 
 interface IProps {}
@@ -13,7 +15,9 @@ class SelectFoodContainer extends React.Component<IProps & IDispatchProps, {}> {
         <div className='select-food-container__item'>
           <MenuCategoryList />
         </div>
-        <div className='select-food-container__item'/>
+        <div className='select-food-container__item'>
+          <MenuList />
+        </div>
         <div className='select-food-container__item'/>
       </div>
     )
