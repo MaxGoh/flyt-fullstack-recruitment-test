@@ -1,0 +1,10 @@
+@import '~assets/main/bits';
+
+.location-card {
+  background: $lightgray;
+  text-align: center;
+
+  & h3 {
+    text-transform: uppercase;
+  }
+}

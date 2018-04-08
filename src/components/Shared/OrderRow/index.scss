@@ -1,7 +1,9 @@
+@import '~assets/scss/bits';
+
 .section-indicator {
   border-radius: 100%;
-  color: #fdeae5;
-  background-color: #ef4135;
+  color: $primary;
+  background-color: $red;
   height: 20px;
   width: 20px;
   text-align: center;

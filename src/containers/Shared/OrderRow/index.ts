@@ -1,11 +1,13 @@
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
 import OrderRow, { IProps, IDispatchProps } from 'components/Shared/OrderRow'
-import { changeActiveLocation } from 'actions'
-import { IRootState } from 'reducers'
+import { retrieveLocationMenuRequest } from 'actions'
+import { TRootState } from 'reducers'
 
-const mapDispatchToProps = (dispatch: Dispatch<IRootState>) => ({
-  changeActiveLocation: (location: String) => dispatch(changeActiveLocation(location))
+const mapDispatchToProps = (dispatch: Dispatch<TRootState>) => ({
+  retrieveLocationMenu: (
+    payload: { locationId: String, orderTypeId: String }
+  ) => dispatch(retrieveLocationMenuRequest(payload))
 })
 
 export default connect<

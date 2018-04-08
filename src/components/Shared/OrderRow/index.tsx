@@ -6,16 +6,24 @@ export interface IProps {
   order: String
   label: String
   uniqueLabel?: String
+  children?: any
 }
 
 export interface IDispatchProps {
-  changeActiveLocation: (location: String) => void
+  retrieveLocationMenu: (
+    payload: { locationId: String, orderTypeId: String }
+  ) => void
 }
 
 type Props = IProps & IDispatchProps
 
-const OrderRow: React.SFC<Props> = ({ order, label, uniqueLabel }) => (
-  <section>
+const OrderRow: React.SFC<Props> = ({
+  order, label, uniqueLabel, children, retrieveLocationMenu
+}) => {
+  const payload = { locationId: '92', orderTypeId: '1' }
+  retrieveLocationMenu(payload)
+  return (
+    <section>
     <BottomBorderDiv borderHeight='2px'>
       <div className='order-row'>
       <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -25,8 +33,11 @@ const OrderRow: React.SFC<Props> = ({ order, label, uniqueLabel }) => (
           <span style={{ color: '#ef4135' }}><b>{uniqueLabel}</b></span>
       </div>
     </BottomBorderDiv>
-    <div>hello</div>
+    <div>
+      {children}
+    </div>
   </section>
-)
+  )
+}
 
 export default OrderRow
