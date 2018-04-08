@@ -11,9 +11,12 @@ import {
   setActiveMenuFailed,
   APPEND_MENU_ITEM,
   appendMenuItemSuccess,
-  appendMenuItemFailed
+  appendMenuItemFailed,
+  REMOVE_MENU_ITEM,
+  removeMenuItemFailed,
+  removeMenuItemSuccess
 } from 'actions'
-import { appendCart, selectCartData } from 'helpers'
+import { appendItemInCart, selectCartData, removeItemInCart } from 'helpers'
 import { ICartData } from 'commons/types';
 
 interface IAction extends Action {
@@ -44,11 +47,24 @@ function* appendMenuItemSaga(action: IAction) {
     const { item } = action.payload
 
     const stateCartData: ICartData[] = yield select(selectCartData)
-    const sortedCartData = appendCart(item, stateCartData)
+    const sortedCartData = appendItemInCart(item, stateCartData)
 
     yield put(appendMenuItemSuccess(sortedCartData))
   } catch (err) {
     yield put(appendMenuItemFailed(err))
+  }
+}
+
+function* removeMenuItemSaga(action: IAction) {
+  try {
+    const { item } = action.payload
+    const stateCartData: ICartData[] = yield select(selectCartData)
+    const sortedCartData = removeItemInCart(item, stateCartData)
+
+    yield put(removeMenuItemSuccess(sortedCartData))
+
+  } catch (err) {
+    yield put(removeMenuItemFailed(err))
   }
 }
 
@@ -57,5 +73,6 @@ export default function* rootSaga() {
     takeLatest(RETRIEVE_LOCATION_MENU_REQUEST, retrieveMenuSaga),
     takeLatest(SET_ACTIVE_MENU, setActiveMenuSaga),
     takeLatest(APPEND_MENU_ITEM, appendMenuItemSaga),
+    takeLatest(REMOVE_MENU_ITEM, removeMenuItemSaga),
   ])
 }

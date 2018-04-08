@@ -147,6 +147,42 @@ export const REMOVE_MENU_ITEM = 'REMOVE_MENU_ITEM'
 export const REMOVE_MENU_ITEM_SUCCESS = 'REMOVE_MENU_ITEM_SUCCESS'
 export const REMOVE_MENU_ITEM_FAILED = 'REMOVE_MENU_ITEM_FAILED'
 
+type RemoveMenuItem = IAction<
+  typeof REMOVE_MENU_ITEM,
+  { item: commonTypes.IMenuCategoriesItem },
+  null
+>
+
+type RemoveMenuItemSuccess = IAction<
+  typeof REMOVE_MENU_ITEM_SUCCESS,
+  commonTypes.ICartData[],
+  null
+>
+
+type RemoveMenuItemFailed = IAction<
+  typeof REMOVE_MENU_ITEM_FAILED,
+  null,
+  String
+>
+
+export const removeMenuItem = (
+  payload: { item: commonTypes.IMenuCategoriesItem }
+): RemoveMenuItem => {
+  return createAction(REMOVE_MENU_ITEM, payload, null)
+}
+
+export const removeMenuItemSuccess = (
+  payload: commonTypes.ICartData[]
+): RemoveMenuItemSuccess => {
+  return createAction(REMOVE_MENU_ITEM_SUCCESS, payload, null)
+}
+
+export const removeMenuItemFailed = (
+  error: String
+): RemoveMenuItemFailed => {
+  return createAction(REMOVE_MENU_ITEM_FAILED, null, error)
+}
+
 export type TRootAction =
   | RetrieveLocationMenuRequest
   | RetrieveLocationMenuSuccess
@@ -157,3 +193,6 @@ export type TRootAction =
   | AppendMenuItem
   | AppendMenuItemSuccess
   | AppendMenuItemFailed
+  | RemoveMenuItem
+  | RemoveMenuItemSuccess
+  | RemoveMenuItemFailed

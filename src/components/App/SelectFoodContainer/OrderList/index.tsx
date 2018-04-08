@@ -1,7 +1,7 @@
 import * as React from 'react'
 import BottomBorderDiv from 'components/Shared/BottomBorderDiv'
 import Button from 'components/Shared/Button'
-import OrderItem from 'components/App/SelectFoodContainer/OrderList/OrderItem'
+import OrderItem from 'containers/App/SelectFoodContainer/OrderList/OrderItem'
 import './index.scss'
 import { ICartData } from 'commons/types'
 import TotalPriceLabel from 'containers/App/SelectFoodContainer/OrderList/TotalPriceLabel'
@@ -21,13 +21,14 @@ class OrderList extends React.Component<IProps, {}> {
           </div>
         </BottomBorderDiv>
         {
-          cart.map((data: ICartData, index: number) => {
+          cart.map((cartData: ICartData, index: number) => {
             return (
               <div style={{ padding: '0 15px' }} key={index}>
                 <OrderItem
-                  quantity={data.quantity}
-                  name={data.data.name}
-                  price={data.data.portions[0].ingredient.addPrice}
+                  quantity={cartData.quantity}
+                  name={cartData.data.name}
+                  price={cartData.data.portions[0].ingredient.addPrice}
+                  data={cartData.data}
                 />
               </div>
             )

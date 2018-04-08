@@ -3,7 +3,7 @@ import { TRootState } from 'reducers'
 
 export const selectCartData = (state: TRootState) => state.cart.payload
 
-export const appendCart = (
+export const appendItemInCart = (
   newCartData: IMenuCategoriesItem,
   cartDatas: ICartData[]
 ): ICartData[] => {
@@ -38,6 +38,52 @@ export const appendCart = (
       data: newCartData
     }
     sortedCart = [ ...cartDatas, cartData ]
+
+  }
+
+  return sortedCart
+}
+
+export const removeItemInCart = (
+  selectedCartData: IMenuCategoriesItem,
+  cartDatas: ICartData[]
+): ICartData[] => {
+  const selectedDataId: number = selectedCartData.id
+  let dataExist: boolean = false
+  let sortedCart: ICartData[] = cartDatas
+
+  // Check if Item already exist in Cart
+
+  cartDatas.map((cartData: ICartData) => {
+    if (cartData.id === selectedDataId) {
+      dataExist = true
+    }
+  })
+
+  if (dataExist) {
+
+    let tempIndex: number = -1
+
+    sortedCart = cartDatas.map((cartData: ICartData, index: number) => {
+      if (cartData.id === selectedDataId) {
+
+        if (cartData.quantity > 1) {
+
+          cartData.quantity = cartData.quantity - 1
+
+        } else {
+
+          tempIndex = index
+
+        }
+
+      }
+      return cartData
+    })
+
+    if (tempIndex !== -1) {
+      sortedCart.splice(tempIndex, 1)
+    }
 
   }
 

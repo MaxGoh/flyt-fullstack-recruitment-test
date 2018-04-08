@@ -9,9 +9,11 @@ import {
   SET_ACTIVE_MENU_FAILED,
   APPEND_MENU_ITEM,
   APPEND_MENU_ITEM_FAILED,
-  APPEND_MENU_ITEM_SUCCESS
+  APPEND_MENU_ITEM_SUCCESS,
+  REMOVE_MENU_ITEM,
+  REMOVE_MENU_ITEM_FAILED,
+  REMOVE_MENU_ITEM_SUCCESS
 } from 'actions'
-// import * as commonTypes from 'commons/types'
 
 export type TRootState = {
   readonly menu: IState
@@ -63,7 +65,7 @@ const setActiveMenuReducer = (
   }
 }
 
-const appendMenuItemReducer = (
+const cartReducer = (
   state = initialState, action: TRootAction
 ) => {
   switch (action.type) {
@@ -73,6 +75,12 @@ const appendMenuItemReducer = (
       return { ...state, fetching: false, payload: action.payload }
     case APPEND_MENU_ITEM_FAILED:
       return { ...state, fetching: false, error: action.error }
+    case REMOVE_MENU_ITEM:
+      return { ...state, fetching: true, request: action.payload }
+    case REMOVE_MENU_ITEM_SUCCESS:
+      return { ...state, fetching: false, payload: action.payload }
+    case REMOVE_MENU_ITEM_FAILED:
+      return { ...state, fetching: false, error: action.error }
     default:
       return state
   }
@@ -81,7 +89,7 @@ const appendMenuItemReducer = (
 const rootReducer = combineReducers<TRootState>({
   menu: retrieveLocationMenuReducer,
   activeMenu: setActiveMenuReducer,
-  cart: appendMenuItemReducer
+  cart: cartReducer
 })
 
 export default rootReducer
