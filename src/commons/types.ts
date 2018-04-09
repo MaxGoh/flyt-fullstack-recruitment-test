@@ -19,6 +19,7 @@ export interface IMenu {
 export interface IMenuCategories {
   id: number
   name: String
+  description: String
   items: IMenuCategoriesItem[]
 }
 

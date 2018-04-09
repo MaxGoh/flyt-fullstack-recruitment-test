@@ -14,10 +14,24 @@ class MenuList extends React.Component<IProps, {}> {
     return (
       <div>
         <BottomBorderDiv borderHeight='2px'>
-          <div style={{ textAlign: 'left', fontSize: '24px' }}>
-            <h1 style={{ margin: 0 }}>
-              {activeMenu.name}
-            </h1>
+          <div>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-between'
+              }}
+            >
+              <h1 style={{ flex: 1, margin: 0, fontSize: '24px' }}>
+                {activeMenu.name}
+              </h1>
+              <span style={{ cursor: 'pointer', margin: 0, fontSize: '22px', color: '#ef4135' }}>
+                <i className='fa fa-info-circle' />
+              </span>
+            </div>
+            <div>
+              <p>{activeMenu.description}</p>
+            </div>
           </div>
         </BottomBorderDiv>
         {
