@@ -1,8 +1,14 @@
+@import '~assets/scss/bits';
+
 .select-food-container {
   box-sizing: border-box;
   padding: 15px;
   display: flex;
   flex-direction: row;
+
+  @include breakpoint(phone) {
+    flex-direction: column;
+  }
 
   &__item {
     flex: 1;

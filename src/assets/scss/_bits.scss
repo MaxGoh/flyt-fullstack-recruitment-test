@@ -12,8 +12,7 @@ VARIABLES
 *********************/
 
 $break-sm: 768px;
-$break-md: 992px;
-$break-lg: 1200px;
+$break-md: 1280px;
 
 /*********************
 BREAKPOINTS
@@ -21,12 +20,18 @@ BREAKPOINTS
 
 @mixin breakpoint($point) {
   @if $point == phone {
-    @media (min-width: $break-sm) { @content ; }
+    @media only screen and (max-width: $break-sm) {
+      @content;
+    }
  }
   @else if $point == tablet {
-    @media (min-width: $break-md) { @content ; }
- }
-   @else if $point == desktop {
-    @media (min-width: $break-lg) { @content ; }
- }
+    @media only screen and (min-width: $break-sm+1) and (max-width: $break-md) {
+      @content;
+    }
+   }
+  @else if $point == desktop {
+    @media only screen and (min-width: $break-md+1) {
+      @content;
+    }
+  }
 }
