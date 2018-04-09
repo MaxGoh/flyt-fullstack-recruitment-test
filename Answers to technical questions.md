@@ -11,3 +11,14 @@ There are a few "improvement" (What I think personally) that can be done.
 
 1. Changing from passing accessToken from query params to header, like this `Authorization: ${accessToken}`
 2. From what I have retrieved, `menusAvailable: [1469]` should be returned as `menusAvailable: 1469` instead. It's just a waste of developer's time to extract out a single value.
+
+#### Additional Comment
+
+From my personal perspective, a Full-stack Engineer is someone who understands and develop on both ends in the system architecture, from development to deployment.
+
+This was a great mini-project, It's great for testing Front-end Engineers. However, as an applicant, I would say that this is not a good test to test for Full-stack engineers as I built this webapp purely working on the client side.
+
+Perhaps, for future tests. Flyt can request a mini-portion of building some RESTful APIs on their own using certain frameworks, as well as requiring them to deploy to a Linux server for DevOps skillsets.
+
+
+Thank You.

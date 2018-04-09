@@ -3,13 +3,15 @@
 ##### Table of Contents
 - [Description](#Description)
 - [Installation](#Installation)
+- [Project Dependencies](#ProjectDependencies)
+
 
 
 #### Description
 
 Project Task Requirement: [Here](https://github.com/flypay/full-stack-recruitment-test)
 
-This project is built and bootstrap using Create-React-App by Facebook. 
+This project is built and bootstrap using Create-React-App by Facebook.
 
 
 #### Installation
@@ -36,3 +38,15 @@ $ yarn start
 
 Proceed to http://localhost:3000
 ```
+
+
+#### Project Dependencies
+
+- NPM
+- yarn
+- create-react-app
+- Typescript
+- Redux
+- Redux-saga
+- Redux-logger
+- Axios
