@@ -1,30 +1,59 @@
 import * as React from 'react'
-import { IMenu, IMenuCategories } from 'commons/types'
+import * as commonTypes from 'commons/types'
 import BottomBorderDiv from 'components/Shared/BottomBorderDiv'
 import './index.scss'
 
 export interface IProps {
-  menus: IMenu[]
+  menus: commonTypes.IMenu[]
+  selectedCategoryId: number
 }
 
-const MenuCategoryList: React.SFC<IProps> = ({
-  menus
+export interface IDispatchProps {
+  setActiveMenu: (
+    payload: { menu: commonTypes.IMenuCategories }
+  ) => void
+}
+
+type Props = IProps & IDispatchProps
+
+const MenuCategoryList: React.SFC<Props> = ({
+  menus, selectedCategoryId, setActiveMenu
 }) => {
   return (
     <div className='menu-category-list'>
       {
         (menus !== undefined)
-          ? menus.map((menuObj: IMenu) => (
-            menuObj.categories.map((menuCategoryObj: IMenuCategories, index: number) => {
+          ? menus.map((menuObj: commonTypes.IMenu) => (
+            menuObj.categories.map((menuCategoryObj: commonTypes.IMenuCategories, index: number) => {
+              const payload = { menu : menuCategoryObj }
               return (
-                <BottomBorderDiv
-                  borderHeight='2px'
+                <div
+                  style={{
+                    cursor: (menuCategoryObj.id === selectedCategoryId )
+                        ? 'default'
+                        : 'pointer'
+                    }}
                   key={index}
+                  onClick={() => {
+                    setActiveMenu(payload)
+                  }}
                 >
-                  <div style={{ textAlign: 'center' }}>
-                    <b>{menuCategoryObj.name}</b>
-                  </div>
-                </BottomBorderDiv>
+                  <BottomBorderDiv
+                    borderHeight='2px'
+                  >
+                    <div style={{ textAlign: 'center' }}>
+                      <b
+                        style={{
+                          color: (menuCategoryObj.id === selectedCategoryId )
+                            ? '#ef4135'
+                            : 'black'
+                        }}
+                      >
+                        {menuCategoryObj.name}
+                      </b>
+                    </div>
+                  </BottomBorderDiv>
+                </div>
               )
             })
           ))

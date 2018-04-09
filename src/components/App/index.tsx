@@ -1,14 +1,13 @@
 import * as React from 'react'
 import BottomBorderDiv from 'components/Shared/BottomBorderDiv'
-import OrderRow from 'containers/Shared/OrderRow'
-import SelectFoodContainer from 'components/App/SelectFoodContainer'
+import OrderRow from 'components/Shared/OrderRow'
+import SelectFoodContainer from 'containers/App/SelectFoodContainer'
 import './index.scss'
 
 const Logo = require('assets/image/logo.svg')
 const Profile = require('assets/image/user.svg')
 
 class App extends React.Component<{}, {}> {
-
   render() {
     return (
       <div className='container'>

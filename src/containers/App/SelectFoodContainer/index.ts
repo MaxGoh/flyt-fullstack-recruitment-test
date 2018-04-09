@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
-import OrderRow, { IProps, IDispatchProps } from 'components/Shared/OrderRow'
+import SelectFoodContainer, { IDispatchProps } from 'components/App/SelectFoodContainer'
 import { retrieveLocationMenuRequest } from 'actions'
 import { TRootState } from 'reducers'
 
@@ -11,5 +11,5 @@ const mapDispatchToProps = (dispatch: Dispatch<TRootState>) => ({
 })
 
 export default connect<
- {}, IDispatchProps, IProps
->(null, mapDispatchToProps)(OrderRow) 
+ {}, IDispatchProps
+>(null, mapDispatchToProps)(SelectFoodContainer)
