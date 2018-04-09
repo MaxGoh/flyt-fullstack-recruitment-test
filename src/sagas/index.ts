@@ -1,6 +1,6 @@
 import { Action } from 'redux'
 import { all } from 'redux-saga/effects'
-import { retrieveMenuService } from 'api/mock'
+import { retrieveMenuService } from 'api'
 import { call, put, takeLatest, select } from 'redux-saga/effects'
 import {
   RETRIEVE_LOCATION_MENU_REQUEST,
@@ -25,9 +25,10 @@ interface IAction extends Action {
 
 function* retrieveMenuSaga(action: IAction) {
   try {
-    let response = yield call(retrieveMenuService)
-    yield put(retrieveLocationMenuSuccess(response))
-    yield put(setActiveMenuSuccess(response.menus[0].categories[0]))
+    const { locationId, orderTypeId } = action.payload
+    let response = yield call(retrieveMenuService, locationId, orderTypeId)
+    yield put(retrieveLocationMenuSuccess(response.data))
+    yield put(setActiveMenuSuccess(response.data.menus[0].categories[0]))
   } catch (err) {
     yield put(retrieveLocationMenuFailed(err))
   }
@@ -35,8 +36,8 @@ function* retrieveMenuSaga(action: IAction) {
 
 function* setActiveMenuSaga(action: IAction) {
   try {
-    const { payload } = action
-    yield put(setActiveMenuSuccess(payload))
+    const { menu } = action.payload
+    yield put(setActiveMenuSuccess(menu))
   } catch (err) {
     yield put(setActiveMenuFailed(err))
   }

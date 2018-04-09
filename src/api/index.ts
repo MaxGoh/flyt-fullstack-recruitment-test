@@ -10,12 +10,8 @@ import { API_URL, ACCESS_TOKEN } from 'commons'
 export const retrieveMenuService = (
   locationId: string, orderTypeId: string
 ) => {
-  let header = {
-    'Authorization': ACCESS_TOKEN
-  }
   return axios({
     method: 'GET',
-    url: `${API_URL}/v2/location/${locationId}/menu/${orderTypeId}`,
-    headers: header
+    url: `${API_URL}/v2/location/${locationId}/menu/${orderTypeId}?accessToken=${ACCESS_TOKEN}`
   })
 }
