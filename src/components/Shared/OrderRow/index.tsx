@@ -9,19 +9,9 @@ export interface IProps {
   children?: any
 }
 
-export interface IDispatchProps {
-  retrieveLocationMenu: (
-    payload: { locationId: String, orderTypeId: String }
-  ) => void
-}
-
-type Props = IProps & IDispatchProps
-
-const OrderRow: React.SFC<Props> = ({
-  order, label, uniqueLabel, children, retrieveLocationMenu
+const OrderRow: React.SFC<IProps> = ({
+  order, label, uniqueLabel, children
 }) => {
-  const payload = { locationId: '92', orderTypeId: '1' }
-  retrieveLocationMenu(payload)
   return (
     <section>
     <BottomBorderDiv borderHeight='2px'>
